@@ -32,4 +32,4 @@ fs.constants.R_OK
 
 ## License
 
-MIT
+[MIT](LICENSE)
