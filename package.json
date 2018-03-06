@@ -1,8 +1,18 @@
 {
   "name": "p-fs",
   "version": "0.0.1",
-  "description": "A dependency-free, promise-based drop-in replacement for fs",
+  "description": "A dependency-free, promise wrapper around fs",
+  "license": "MIT",
+  "author": "Chris Deacy <chrisdothtml@gmail.com>",
+  "repository": "github:chrisdothtml/p-fs",
+  "main": "index.js",
   "engines": {
     "node": ">=0.12.18"
-  }
+  },
+  "keywords": [
+    "filesystem",
+    "fs",
+    "promise",
+    "wrapper"
+  ]
 }
