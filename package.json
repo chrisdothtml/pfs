@@ -1,0 +1,8 @@
+{
+  "name": "p-fs",
+  "version": "0.0.1",
+  "description": "A dependency-free, promise-based drop-in replacement for fs",
+  "engines": {
+    "node": ">=0.12.18"
+  }
+}
