@@ -1,5 +1,8 @@
 # p-fs
 
+![node version](https://img.shields.io/node/v/p-fs.svg)
+[![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 > A dependency-free, promise wrapper around [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html)
 
 ## Install
