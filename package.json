@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Chris Deacy <chrisdothtml@gmail.com>",
   "repository": "github:chrisdothtml/pfs",
-  "main": "index.js",
+  "main": "lib/index.js",
   "engines": {
     "node": ">=0.12.18"
   },
