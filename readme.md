@@ -1,6 +1,7 @@
 # pfs
 
 ![node version](https://img.shields.io/node/v/pfs.svg)
+![travis-ci build status](https://api.travis-ci.org/chrisdothtml/pfs.svg?branch=master)
 [![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > A dependency-free, promise wrapper around [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html)
