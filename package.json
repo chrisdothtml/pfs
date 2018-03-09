@@ -16,7 +16,7 @@
     "wrapper"
   ],
   "scripts": {
-    "lint": "standard '**/*.js' --verbose | snazzy",
+    "lint": "standard '*(lib|test)/*.js' --verbose | snazzy",
     "test": "mocha"
   },
   "devDependencies": {
