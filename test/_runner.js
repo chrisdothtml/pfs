@@ -6,7 +6,9 @@ exports.test = function test (runTest) {
 
 exports.run = function run () {
   Promise.all(
-    TESTS.map(test => test())
+    TESTS.map(function (test) {
+      return test()
+    })
   )
     .then(function () {
       console.log('All tests pass!')
