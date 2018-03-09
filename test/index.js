@@ -30,4 +30,16 @@ describe('pfs', function () {
       expect(pkg.name).to.equal(meta.name)
     })
   })()
+
+  it('rejects the promise if an error is provided', function () {
+    const fakePath = 'file-that-doesnt-exist.txt'
+
+    return pfs.readFile(fakePath, 'utf-8')
+      .catch(function (error) {
+        return error
+      })
+      .then(function (error) {
+        return expect(error.path).to.equal(fakePath)
+      })
+  })
 })
