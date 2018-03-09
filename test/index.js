@@ -1,16 +1,34 @@
 var assert = require('assert')
 var pfs = require('../lib/index.js')
 var testRunner = require('./_runner.js')
+var utils = require('../lib/utils.js')
 
+var getOwnProps = utils.getOwnProps
 var test = testRunner.test
 
 test(function () {
-  var deepKeys = require('deep-keys')
+  assert.deepEqual(
+    getOwnProps({ foo: '', bar: '' }),
+    ['foo', 'bar'],
+    'utils.getOwnProp gets owned props'
+  )
+
+  function qux () { /**/ }
+  qux.quux = ''
+
+  assert.deepEqual(
+    getOwnProps({ foo: { bar: '' }, baz: '', qux: qux }, true),
+    [['foo.bar'], 'baz', ['qux.quux']],
+    'utils.getOwnProp gets deep owned props'
+  )
+})
+
+test(function () {
   var fs = require('fs')
 
   assert.deepEqual(
-    deepKeys(pfs),
-    deepKeys(fs),
+    getOwnProps(pfs, true),
+    getOwnProps(fs, true),
     'keys deep match fs keys'
   )
 })
