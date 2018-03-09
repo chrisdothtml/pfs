@@ -1,17 +1,18 @@
 /* eslint-env mocha */
 
 var expect = require('chai').expect
-var fs = require('fs')
-var meta = require('../package.json')
 var path = require('path')
 var pfs = require('../lib/index.js')
 
 describe('pfs', function () {
   it('deep matches fs keys', function () {
+    var fs = require('fs')
+
     expect(pfs).to.have.deep.keys(fs)
   })
 
   ;(function () {
+    var meta = require('../package.json')
     var pkgPath = path.join(__dirname, '../package.json')
 
     it('provides callback-based methods as promises', function () {
