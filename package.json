@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "lint": "standard '**/*.js' --verbose | snazzy",
-    "prepush": "npm run lint",
+    "prepush": "npm run lint && npm test",
     "test": "node ./test/index.js"
   },
   "devDependencies": {
