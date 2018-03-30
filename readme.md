@@ -34,6 +34,8 @@ fs.readFileSync('my-file.txt', 'utf-8')
 fs.constants.R_OK
 ```
 
+## [Changelog](https://github.com/chrisdothtml/pfs/releases)
+
 ## License
 
 [MIT](LICENSE)
