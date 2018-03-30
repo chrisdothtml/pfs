@@ -1,61 +1,55 @@
-var deepKeys = require('deep-keys')
-var assert = require('assert')
-var pfs = require('../index.js')
-var testRunner = require('./_runner.js')
+const deepKeys = require('deep-keys');
+const assert = require('assert');
+const pfs = require('../index.js');
+const testRunner = require('./_runner.js');
+const fs = require('fs');
+const test = testRunner.test;
+const meta = require('../package');
+const path = require('path');
+const pkgPath = path.join(__dirname, '../package.json');
 
-var test = testRunner.test
-
-test(function () {
-  var fs = require('fs')
-
+test(() => {
   assert.deepEqual(
     deepKeys(pfs),
     deepKeys(fs),
     'keys deep match fs keys'
   )
-})
+});
 
-;(function () {
-  var meta = require('../package.json')
-  var path = require('path')
-  var pkgPath = path.join(__dirname, '../package.json')
-
-  test(function () {
-    return pfs.readFile(pkgPath, 'utf-8')
-      .then(function (pkgContent) {
-        var pkg = JSON.parse(pkgContent)
-
+(() => {
+  test(() =>
+    pfs.readFile(pkgPath, 'utf-8')
+      .then((pkgContent) => {
+        const pkg = JSON.parse(pkgContent)
         assert.ok(
           (pkg.name === meta.name),
           'provides callback-based methods as promises'
-        )
+        );
       })
-  })
+  );
 
-  test(function () {
-    var pkgContent = pfs.readFileSync(pkgPath, 'utf-8')
-    var pkg = JSON.parse(pkgContent)
+  test(() => {
+    const pkgContent = pfs.readFileSync(pkgPath, 'utf-8');
+    const pkg = JSON.parse(pkgContent);
 
     assert.ok(
       (pkg.name === meta.name),
       'provides non-callback-based methods unchanged'
-    )
-  })
-})()
+    );
+  });
+})();
 
-test(function () {
+test(() => {
   const fakePath = 'file-that-doesnt-exist.txt'
 
   return pfs.readFile(fakePath, 'utf-8')
-    .catch(function (error) {
-      return error
-    })
-    .then(function (error) {
+    .catch((error) => error)
+    .then((error) =>
       assert.ok(
         (error.path === fakePath),
         'rejects the promise if an error is provided'
       )
-    })
-})
+    );
+});
 
 testRunner.run()

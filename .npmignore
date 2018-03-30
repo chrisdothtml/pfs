@@ -1,2 +1,3 @@
-.travis.yml
-test
+.*
+CHANGELOG.md
+test/
