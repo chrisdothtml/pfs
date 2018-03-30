@@ -1,12 +1,12 @@
-var deepKeys = require('deep-keys')
-var assert = require('assert')
-var pfs = require('../index.js')
-var testRunner = require('./_runner.js')
+const deepKeys = require('deep-keys')
+const assert = require('assert')
+const pfs = require('../index.js')
+const testRunner = require('./_runner.js')
 
-var test = testRunner.test
+const test = testRunner.test
 
 test(function () {
-  var fs = require('fs')
+  const fs = require('fs')
 
   assert.deepEqual(
     deepKeys(pfs),
@@ -16,14 +16,14 @@ test(function () {
 })
 
 ;(function () {
-  var meta = require('../package.json')
-  var path = require('path')
-  var pkgPath = path.join(__dirname, '../package.json')
+  const meta = require('../package.json')
+  const path = require('path')
+  const pkgPath = path.join(__dirname, '../package.json')
 
   test(function () {
     return pfs.readFile(pkgPath, 'utf-8')
       .then(function (pkgContent) {
-        var pkg = JSON.parse(pkgContent)
+        const pkg = JSON.parse(pkgContent)
 
         assert.ok(
           (pkg.name === meta.name),
@@ -33,8 +33,8 @@ test(function () {
   })
 
   test(function () {
-    var pkgContent = pfs.readFileSync(pkgPath, 'utf-8')
-    var pkg = JSON.parse(pkgContent)
+    const pkgContent = pfs.readFileSync(pkgPath, 'utf-8')
+    const pkg = JSON.parse(pkgContent)
 
     assert.ok(
       (pkg.name === meta.name),

@@ -1,4 +1,4 @@
-var TESTS = []
+const TESTS = []
 
 exports.test = function test (runTest) {
   TESTS.push(runTest)
