@@ -1,21 +1,21 @@
 {
-  "name": "pfs",
-  "version": "2.1.3",
-  "description": "A dependency-free, promise wrapper around fs",
+  "name": "@haensl/pfs",
+  "version": "2.2.0",
+  "description": "Dependency-free, promise wrapper around fs.",
   "license": "MIT",
-  "author": "Chris Deacy <chrisdothtml@gmail.com>",
-  "contributors": [
-    {
-      "name": "HP Dietz",
-      "email": "h.p.dietz@gmail.com",
-      "url": "https://hpdietz.com",
-      "twitter": "@h_p_d"
-    }
-  ],
-  "repository": "github:chrisdothtml/pfs",
+  "author": {
+    "name": "HP Dietz",
+    "email": "h.p.dietz@gmail.com",
+    "url": "https://hpdietz.com",
+    "twitter": "@h_p_d"
+  },
+  "repository": {
+    "url": "git+https://github.com/haensl/pfs.git",
+    "type": "git"
+  },
   "main": "index.js",
   "engines": {
-    "node": ">=0.12.18"
+    "node": ">=6"
   },
   "keywords": [
     "filesystem",
@@ -24,12 +24,23 @@
     "wrapper"
   ],
   "scripts": {
-    "lint": "standard '**/*.js' --verbose | snazzy",
-    "test": "node ./test/index.js"
+    "test": "mocha",
+    "tdd": "mocha --watch",
+    "lint": "eslint ./**/*.js",
+    "precommit": "npm run lint",
+    "prepush": "npm run test"
   },
+  "eslintConfig": "./.eslintrc.json",
   "devDependencies": {
     "deep-keys": "^0.5.0",
-    "snazzy": "^7.1.1",
-    "standard": "^11.0.0"
+    "eslint": "^4.19.1",
+    "husky": "^0.14.3",
+    "mocha": "^5.0.5"
+  },
+  "bugs": {
+    "url": "https://github.com/haensl/pfs/issues"
+  },
+  "homepage": {
+    "url": "https://github.com/haensl/pfs#readme"
   }
 }
