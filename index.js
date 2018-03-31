@@ -1,46 +1,39 @@
-function promisify (parent, key) {
-  return function () {
-    var args = Array.prototype.slice.call(arguments)
+const fs = require('fs');
 
-    return new Promise(function (resolve, reject) {
+const promisify = (parent, key) =>
+  function() {
+    const args = Array.prototype.slice.call(arguments);
+
+    return new Promise((resolve, reject) => {
       parent[key].apply(
         parent,
-        args.concat(function (error, result) {
+        args.concat((error, result) => {
           if (error) {
-            reject(error)
-          } else {
-            resolve(result)
+            return reject(error);
           }
-        })
-      )
-    })
-  }
-}
 
-function wrapMethod (parent, key) {
-  var result = promisify(parent, key)
+          resolve(result);
+        })
+      );
+    });
+  };
+
+
+const wrapMethod = (parent, key) => {
+  const wrapped = promisify(parent, key);
 
   // wrap nested methods (e.g. fs.realpath.native)
   Object.keys(parent[key])
-    .filter(function (childKey) {
-      return typeof parent[key][childKey] === 'function'
-    })
-    .forEach(function (childKey) {
-      result[childKey] = wrapMethod(parent[key], childKey)
-    })
+    .filter((childKey) => typeof parent[key][childKey] === 'function')
+    .forEach((childKey) => wrapped[childKey] = wrapMethod(parent[key], childKey));
 
-  return result
-}
+  return wrapped;
+};
 
-module.exports = (function () {
-  var fs = require('fs')
-
-  return Object.keys(fs)
-    .reduce(function (pfs, key, i, keys) {
-      // only wrap methods with a `Sync` counterpart
-      var isWrappable = ~keys.indexOf(key + 'Sync')
-
-      pfs[key] = isWrappable ? wrapMethod(fs, key) : fs[key]
-      return pfs
+module.exports = (() =>
+  Object.keys(fs)
+    .reduce((pfs, key, i, keys) => {
+      pfs[key] = keys.includes(`${key}Sync`) ? wrapMethod(fs, key) : fs[key];
+      return pfs;
     }, {})
-})()
+)();

@@ -1,61 +1,71 @@
-var deepKeys = require('deep-keys')
-var assert = require('assert')
-var pfs = require('../index.js')
-var testRunner = require('./_runner.js')
+const deepKeys = require('deep-keys');
+const assert = require('assert');
+const pfs = require('../index.js');
+const fs = require('fs');
+const meta = require('../package');
+const path = require('path');
+const pkgPath = path.join(__dirname, '../package.json');
 
-var test = testRunner.test
+describe('When initializing the module', () => {
+  it('keys deep match fs keys', () => {
+    assert.deepEqual(
+      deepKeys(pfs),
+      deepKeys(fs),
+      'keys deep match fs keys'
+    );
+  });
+});
 
-test(function () {
-  var fs = require('fs')
+describe('When reading a file', () => {
+  let contents;
 
-  assert.deepEqual(
-    deepKeys(pfs),
-    deepKeys(fs),
-    'keys deep match fs keys'
-  )
-})
+  describe('and using a callback based function', () => {
+    describe('and providing a valid path', () => {
+      beforeEach((done) => {
+        pfs.readFile(pkgPath, 'utf-8')
+          .then((pkgContent) => {
+            contents = JSON.parse(pkgContent);
+            done();
+          });
+      });
 
-;(function () {
-  var meta = require('../package.json')
-  var path = require('path')
-  var pkgPath = path.join(__dirname, '../package.json')
-
-  test(function () {
-    return pfs.readFile(pkgPath, 'utf-8')
-      .then(function (pkgContent) {
-        var pkg = JSON.parse(pkgContent)
-
+      it('resolves with the correct data', () => {
         assert.ok(
-          (pkg.name === meta.name),
+          (contents.name === meta.name),
           'provides callback-based methods as promises'
-        )
-      })
-  })
+        );
+      });
+    });
 
-  test(function () {
-    var pkgContent = pfs.readFileSync(pkgPath, 'utf-8')
-    var pkg = JSON.parse(pkgContent)
+    describe('and providing an invalid path', () => {
+      let error;
+      beforeEach((done) => {
+        pfs.readFile('non-existent-file', 'utf-8')
+          .catch((err) => {
+            error = err;
+            done();
+          });
+      });
 
-    assert.ok(
-      (pkg.name === meta.name),
-      'provides non-callback-based methods unchanged'
-    )
-  })
-})()
+      it('rejects with an error', () => {
+        assert.ok(
+          (error instanceof Error),
+          'rejects with an error'
+        );
+      });
+    });
+  });
 
-test(function () {
-  const fakePath = 'file-that-doesnt-exist.txt'
+  describe('and using a non-callback based function', () => {
+    beforeEach(() => {
+      contents = JSON.parse(pfs.readFileSync(pkgPath, 'utf8'));
+    });
 
-  return pfs.readFile(fakePath, 'utf-8')
-    .catch(function (error) {
-      return error
-    })
-    .then(function (error) {
+    it('provides non-callback-based functions unchanged', () => {
       assert.ok(
-        (error.path === fakePath),
-        'rejects the promise if an error is provided'
-      )
-    })
-})
-
-testRunner.run()
+        (contents.name === meta.name),
+        'provides callback-based methods as promises'
+      );
+    });
+  });
+});
