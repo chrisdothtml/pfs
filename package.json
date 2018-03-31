@@ -1,7 +1,7 @@
 {
-  "name": "@haensl/pfs",
+  "name": "fs.promise",
   "version": "2.2.0",
-  "description": "Dependency-free, promise wrapper around fs.",
+  "description": "Lightweight, dependency-free, promise wrapper around fs.",
   "license": "MIT",
   "author": {
     "name": "HP Dietz",

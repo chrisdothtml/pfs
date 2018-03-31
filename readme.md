@@ -1,19 +1,19 @@
 # fs.promise
 
-[![NPM](https://nodei.co/npm/@haensl/fs.promise.png?downloads=true)](https://nodei.co/npm/@haensl/pfs/)
+[![NPM](https://nodei.co/npm/fs.promise.png?downloads=true)](https://nodei.co/npm/fs.promise/)
 
-![node version](https://img.shields.io/badge/node-%3E%3D0.12.18-brightgreen.svg)
-[![travis-ci build status](https://api.travis-ci.org/haensl/pfs.svg?branch=master)](https://travis-ci.org/haensl/pfs/branches)
+[![npm version](https://badge.fury.io/js/fs.promise.svg)](http://badge.fury.io/js/fs.promise)
+[![travis-ci build status](https://api.travis-ci.org/haensl/fs.promise.svg?branch=master)](https://travis-ci.org/haensl/fs.promise/branches)
 
-Lightweight, dependency-free, promise wrapper around node's [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html)
+Lightweight, dependency-free, promise wrapper around node.js' [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html).
 
 ## Installation
 
 ```bash
-$ yarn add pfs
+$ yarn add fs.promise
 
 # or npm
-$ npm install --save pfs
+$ npm install --save fs.promise
 ```
 
 ## Use
