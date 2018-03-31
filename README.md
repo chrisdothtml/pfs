@@ -1,19 +1,19 @@
-# fs.promise
+# pfs
 
-[![NPM](https://nodei.co/npm/fs.promise.png?downloads=true)](https://nodei.co/npm/fs.promise/)
+[![NPM](https://nodei.co/npm/@haensl%2Fpfs.png?downloads=true)](https://nodei.co/npm/@haensl%2pfs/)
 
-[![npm version](https://badge.fury.io/js/fs.promise.svg)](http://badge.fury.io/js/fs.promise)
-[![travis-ci build status](https://api.travis-ci.org/haensl/fs.promise.svg?branch=master)](https://travis-ci.org/haensl/fs.promise/branches)
+[![npm version](https://badge.fury.io/js/@haensl%2Fpfs.svg)](http://badge.fury.io/js/@haensl%2Fpfs)
+[![travis-ci build status](https://api.travis-ci.org/haensl/@haensl%2Fpfs.svg?branch=master)](https://travis-ci.org/haensl/@haensl%2Fpfs/branches)
 
 Lightweight, dependency-free, promise wrapper around node.js' [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html).
 
 ## Installation
 
 ```bash
-$ yarn add fs.promise
+$ yarn add @haensl/pfs
 
 # or npm
-$ npm install --save fs.promise
+$ npm install --save @haensl/pfs
 ```
 
 ## Use
@@ -21,7 +21,7 @@ $ npm install --save fs.promise
 Exactly how you would use `fs`. This is a drop-in replacement that converts any callback-based functions to promise-based ones.
 
 ```javascript
-const fs = require('fs.promise')
+const fs = require('@haensl/pfs')
 
 // now uses promise
 fs.readFile('my-file.txt', 'utf-8')
