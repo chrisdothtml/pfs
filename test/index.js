@@ -1,11 +1,9 @@
 const deepKeys = require('deep-keys')
 const assert = require('assert')
 const pfs = require('../index.js')
-const testRunner = require('./_runner.js')
+const { test, run: runTests } = require('./_runner.js')
 
-const test = testRunner.test
-
-test(function () {
+test(() => {
   const fs = require('fs')
 
   assert.deepEqual(
@@ -15,14 +13,14 @@ test(function () {
   )
 })
 
-;(function () {
+;(() => {
   const meta = require('../package.json')
   const path = require('path')
   const pkgPath = path.join(__dirname, '../package.json')
 
-  test(function () {
+  test(() => {
     return pfs.readFile(pkgPath, 'utf-8')
-      .then(function (pkgContent) {
+      .then((pkgContent) => {
         const pkg = JSON.parse(pkgContent)
 
         assert.ok(
@@ -32,7 +30,7 @@ test(function () {
       })
   })
 
-  test(function () {
+  test(() => {
     const pkgContent = pfs.readFileSync(pkgPath, 'utf-8')
     const pkg = JSON.parse(pkgContent)
 
@@ -43,14 +41,14 @@ test(function () {
   })
 })()
 
-test(function () {
+test(() => {
   const fakePath = 'file-that-doesnt-exist.txt'
 
   return pfs.readFile(fakePath, 'utf-8')
-    .catch(function (error) {
+    .catch((error) => {
       return error
     })
-    .then(function (error) {
+    .then((error) => {
       assert.ok(
         (error.path === fakePath),
         'rejects the promise if an error is provided'
@@ -58,4 +56,4 @@ test(function () {
     })
 })
 
-testRunner.run()
+runTests()
