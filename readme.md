@@ -1,6 +1,6 @@
 # pfs
 
-![node version](https://img.shields.io/badge/node-%3E%3D0.12.18-brightgreen.svg)
+![node version](https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg)
 [![travis-ci build status](https://api.travis-ci.org/chrisdothtml/pfs.svg?branch=master)](https://travis-ci.org/chrisdothtml/pfs/branches)
 [![StandardJS](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
