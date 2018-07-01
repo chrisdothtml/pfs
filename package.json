@@ -1,7 +1,7 @@
 {
   "name": "pfs",
   "version": "2.1.2",
-  "description": "A dependency-free, promise wrapper around fs",
+  "description": "A tiny promise wrapper around fs",
   "license": "MIT",
   "author": "Chris Deacy <chrisdothtml@gmail.com>",
   "repository": "github:chrisdothtml/pfs",
