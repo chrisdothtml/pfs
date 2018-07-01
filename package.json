@@ -10,9 +10,13 @@
     "node": ">=0.12.18"
   },
   "keywords": [
+    "files",
     "filesystem",
     "fs",
     "promise",
+    "small",
+    "then",
+    "tiny",
     "wrapper"
   ],
   "scripts": {
