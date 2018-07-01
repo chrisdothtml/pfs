@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 function promisify (parent, key) {
   return function () {
     const args = Array.prototype.slice.call(arguments)
@@ -33,8 +35,6 @@ function wrapMethod (parent, key) {
 }
 
 module.exports = (() => {
-  const fs = require('fs')
-
   return Object.keys(fs)
     .reduce((pfs, key, i, keys) => {
       // only wrap methods with a `Sync` counterpart

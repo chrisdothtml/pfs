@@ -1,11 +1,11 @@
-const deepKeys = require('deep-keys')
 const assert = require('assert')
+const deepKeys = require('deep-keys')
+const fs = require('fs')
+const path = require('path')
 const pfs = require('../index.js')
 const { test, run: runTests } = require('./_runner.js')
 
 test(() => {
-  const fs = require('fs')
-
   assert.deepEqual(
     deepKeys(pfs),
     deepKeys(fs),
@@ -15,8 +15,7 @@ test(() => {
 
 ;(() => {
   const meta = require('../package.json')
-  const path = require('path')
-  const pkgPath = path.join(__dirname, '../package.json')
+  const pkgPath = path.resolve(__dirname, '../package.json')
 
   test(() => {
     return pfs.readFile(pkgPath, 'utf-8')
