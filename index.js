@@ -38,7 +38,7 @@ module.exports = (() => {
   return Object.keys(fs)
     .reduce((pfs, key, i, keys) => {
       // only wrap methods with a `Sync` counterpart
-      const isWrappable = keys.includes(key + 'Sync')
+      const isWrappable = fs[key] && keys.includes(key + 'Sync')
 
       pfs[key] = isWrappable ? wrapMethod(fs, key) : fs[key]
       return pfs
