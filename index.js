@@ -22,6 +22,13 @@ const promisify = (parent, key) =>
 const wrapMethod = (parent, key) => {
   const wrapped = promisify(parent, key);
 
+  if (typeof parent !== 'object') {
+    console.error('no object');
+    console.error('parent');
+    console.error(parent);
+    console.log('key', key);
+  }
+
   // wrap nested methods (e.g. fs.realpath.native)
   Object.keys(parent[key])
     .filter((childKey) => typeof parent[key][childKey] === 'function')
