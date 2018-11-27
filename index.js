@@ -20,14 +20,18 @@ const promisify = (parent, key) =>
 
 
 const wrapMethod = (parent, key) => {
-  const wrapped = promisify(parent, key);
+  if (typeof parent[key] === 'function') {
+    const wrapped = promisify(parent, key);
 
   // wrap nested methods (e.g. fs.realpath.native)
-  Object.keys(parent[key])
-    .filter((childKey) => typeof parent[key][childKey] === 'function')
-    .forEach((childKey) => wrapped[childKey] = wrapMethod(parent[key], childKey));
+    Object.keys(parent[key])
+      .filter((childKey) => typeof parent[key][childKey] === 'function')
+      .forEach((childKey) => wrapped[childKey] = wrapMethod(parent[key], childKey));
 
-  return wrapped;
+    return wrapped;
+  }
+
+  return parent[key];
 };
 
 module.exports = (() =>
