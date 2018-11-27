@@ -1,3 +1,6 @@
+## 2.2.2
+* [#3: Fix build.](https://github.com/haensl/pfs/issues/3)
+
 ## 2.2.1
 * Update dependencies.
 * Add CD.
