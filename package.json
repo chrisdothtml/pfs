@@ -1,6 +1,6 @@
 {
   "name": "@haensl/pfs",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Lightweight, dependency-free, promise wrapper around fs.",
   "license": "MIT",
   "author": {
@@ -15,7 +15,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=6"
+    "node": ">=8.3.0"
   },
   "keywords": [
     "filesystem",
@@ -31,11 +31,11 @@
     "prepush": "npm run lint && npm test"
   },
   "devDependencies": {
-    "@haensl/eslint-config": "^1.0.0",
+    "@haensl/eslint-config": "^1.3.0",
     "deep-keys": "^0.5.0",
-    "eslint": "^4.19.1",
-    "husky": "^0.14.3",
-    "mocha": "^5.2.0"
+    "eslint": "^6.7.2",
+    "husky": "^3.1.0",
+    "mocha": "^6.2.2"
   },
   "bugs": {
     "url": "https://github.com/haensl/pfs/issues"
