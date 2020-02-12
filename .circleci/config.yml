@@ -82,7 +82,7 @@ commands:
       - attach_workspace:
           at: ~/pfs
       - create-test-project
-      - extract-changelog-version
+      - extract-versions
       - run:
           name: install module
           working-directory: /tmp/test-app
