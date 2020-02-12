@@ -214,9 +214,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/pfs
-      - extract-changelog-version
-      - extract-package-json-version
-      - extract-published-version
+      - init
+      - extract-versions
       - run:
           name: changelog matches package.json
           command: |
@@ -246,9 +245,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/pfs
-      - run:
-          name: update npm
-          command: sudo npm install -g npm@latest
+      - init
       - run:
           name: setup npm registry token
           command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
@@ -261,6 +258,7 @@ jobs:
       - image: circleci/node:lts
     working_directory: /tmp/test-app
     steps:
+      - init
       - package-test-setup
       - run:
           name: test node.js module
