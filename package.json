@@ -17,7 +17,7 @@
   "unpkg": "lib/pfs.umd.js",
   "jsdelivr": "lib/pfs.umd.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=8.3.0"
   },
   "husky": {
     "hooks": {
