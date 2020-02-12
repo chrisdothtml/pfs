@@ -63,9 +63,8 @@ commands:
           working-directory: /tmp
           name: create test application
           command: |
-            mkdir test-app
-            cd test-app
             npm init -y
+            ls -la
 
   bundle-test-setup:
     steps:
