@@ -1,3 +1,10 @@
 .*
 *.md
-test/
+**/*.test.js
+rollup.*
+test-results/
+src/
+node_modules/
+.DS_Store/
+*.log
+*.tgz

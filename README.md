@@ -3,7 +3,8 @@
 [![NPM](https://nodei.co/npm/@haensl%2Fpfs.png?downloads=true)](https://nodei.co/npm/@haensl%2pfs/)
 
 [![npm version](https://badge.fury.io/js/@haensl%2Fpfs.svg)](http://badge.fury.io/js/@haensl%2Fpfs)
-[![travis-ci build status](https://api.travis-ci.org/haensl/@haensl%2Fpfs.svg?branch=master)](https://travis-ci.org/haensl/@haensl%2Fpfs/branches)
+
+[![CircleCI](https://circleci.com/gh/haensl/pfs.svg?style=svg)](https://circleci.com/gh/haensl/pfs)
 
 Lightweight, dependency-free, promise wrapper around node.js' [fs](https://nodejs.org/dist/latest-v9.x/docs/api/fs.html).
 
@@ -13,7 +14,7 @@ Lightweight, dependency-free, promise wrapper around node.js' [fs](https://nodej
 $ yarn add @haensl/pfs
 
 # or npm
-$ npm install --save @haensl/pfs
+$ npm install -S @haensl/pfs
 ```
 
 ## Use
@@ -25,7 +26,9 @@ const fs = require('@haensl/pfs')
 
 // now uses promise
 fs.readFile('my-file.txt', 'utf-8')
-  .then(...)
+  .then((content) => {
+    // do nice things
+  })
   .catch(...)
 
 // still works the same

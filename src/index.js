@@ -1,9 +1,7 @@
 const fs = require('fs');
 
 const promisify = (parent, key) =>
-  function() {
-    const args = Array.prototype.slice.call(arguments);
-
+  function(...args) {
     return new Promise((resolve, reject) => {
       parent[key].apply(
         parent,
@@ -18,12 +16,11 @@ const promisify = (parent, key) =>
     });
   };
 
-
 const wrapMethod = (parent, key) => {
   if (typeof parent[key] === 'function') {
     const wrapped = promisify(parent, key);
 
-  // wrap nested methods (e.g. fs.realpath.native)
+    // wrap nested methods (e.g. fs.realpath.native)
     Object.keys(parent[key])
       .filter((childKey) => typeof parent[key][childKey] === 'function')
       .forEach((childKey) => wrapped[childKey] = wrapMethod(parent[key], childKey));

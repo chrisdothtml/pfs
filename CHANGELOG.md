@@ -1,3 +1,6 @@
+## 2.3.0
+* [#7: Overhaul.](https://github.com/haensl/pfs/issues/7)
+
 ## 2.2.3
 * [#5: Fix build.](https://github.com/haensl/pfs/issues/5)
 
