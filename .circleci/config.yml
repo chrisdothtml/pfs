@@ -76,7 +76,7 @@ commands:
           name: install module
           working-directory: /tmp/test-app
           command: |
-            npm i -S ~/pfs/pfs.tgz
+            npm i -S ~/pfs/haensl-pfs.tgz
 
   package-test-setup:
     steps:
@@ -177,7 +177,7 @@ jobs:
           name: generate tarball
           command: |
             npm pack
-            mv pfs-${VERSION}.tgz pfs.tgz
+            mv haensl-pfs-${VERSION}.tgz haensl-pfs.tgz
       - store_artifacts:
           path: pfs.tgz
       - persist_to_workspace:
@@ -190,7 +190,7 @@ jobs:
             - LICENSE
             - package.json
             - package-lock.json
-            - pfs.tgz
+            - haensl-pfs.tgz
             - .npmignore
 
   bundle-test-cjs-js:
