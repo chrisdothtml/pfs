@@ -26,7 +26,7 @@ commands:
           name: extract latest published version
           working_directory: ~/pfs
           command: |
-            LIVE_VERSION=$(npm show pfs version)
+            LIVE_VERSION=$(npm show @haensl/pfs version)
             echo "export LIVE_VERSION=${LIVE_VERSION}" >> ${BASH_ENV}
             echo "latest published version: ${LIVE_VERSION}"
   extract-versions:
