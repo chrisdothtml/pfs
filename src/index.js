@@ -1,9 +1,7 @@
 const fs = require('fs');
 
 const promisify = (parent, key) =>
-  function() {
-    const args = Array.prototype.slice.call(arguments);
-
+  function(...args) {
     return new Promise((resolve, reject) => {
       parent[key].apply(
         parent,
@@ -17,7 +15,6 @@ const promisify = (parent, key) =>
       );
     });
   };
-
 
 const wrapMethod = (parent, key) => {
   const wrapped = promisify(parent, key);

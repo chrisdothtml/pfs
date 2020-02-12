@@ -1,6 +1,6 @@
 const deepKeys = require('deep-keys');
 const assert = require('assert');
-const pfs = require('../');
+const pfs = require('./');
 const fs = require('fs');
 const meta = require('../package');
 const path = require('path');
