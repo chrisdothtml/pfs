@@ -1,6 +1,6 @@
 {
   "name": "@haensl/pfs",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Lightweight, dependency-free, promise wrapper around fs.",
   "license": "MIT",
   "author": {

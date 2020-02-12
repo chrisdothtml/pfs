@@ -1,3 +1,7 @@
+## 2.3.1
+* Fix package-information command.
+* Remove obsolete travis config.
+
 ## 2.3.0
 * [#7: Overhaul.](https://github.com/haensl/pfs/issues/7)
 

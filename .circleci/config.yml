@@ -29,6 +29,7 @@ commands:
             LIVE_VERSION=$(npm show @haensl/pfs version)
             echo "export LIVE_VERSION=${LIVE_VERSION}" >> ${BASH_ENV}
             echo "latest published version: ${LIVE_VERSION}"
+
   extract-versions:
     steps:
       - extract-package-json-version
@@ -97,8 +98,8 @@ commands:
       - run:
           name: gather bundle information
           command: |
-            npm info pfs@${VERSION} > ./bundle.info
-            tree -s node_modules/pfs >> ./bundle.info
+            npm info @haensl/pfs@${VERSION} > ./bundle.info
+            tree -s node_modules/@haensl/pfs >> ./bundle.info
       - store_artifacts:
           path: bundle.info
 
