@@ -29,6 +29,11 @@ commands:
             LIVE_VERSION=$(npm show pfs version)
             echo "export LIVE_VERSION=${LIVE_VERSION}" >> ${BASH_ENV}
             echo "latest published version: ${LIVE_VERSION}"
+  extract-versions:
+    steps:
+      - extract-package-json-version
+      - extract-changelog-version
+      - extract-published-version
 
   init:
     steps:
