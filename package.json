@@ -19,7 +19,7 @@
   "engines": {
     "node": ">=8.3.0"
   },
-  "eslint-config": {
+  "eslintConfig": {
     "env": {
       "es6": true,
       "node": true,

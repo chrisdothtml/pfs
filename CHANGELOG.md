@@ -1,6 +1,7 @@
 ## 2.4.0
 * [#9: Automate Github release.](https://github.com/haensl/pfs/issues/9)
 * Update dependencies.
+* Pull eslint config into `package.json`.
 
 ## 2.3.1
 * Fix package-information command.
