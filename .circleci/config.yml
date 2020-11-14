@@ -130,6 +130,9 @@ workflows:
       - package-test-cjs-js:
           requires:
             - publish
+      - publish-github-release:
+          requires:
+            - package-test-cjs-js
 
 jobs:
   lint:
@@ -266,3 +269,21 @@ jobs:
             cp ~/pfs/src/package-tests/cjs/node.e2e.js ./
             node node.e2e.js
       - package-information
+
+  publish-github-release:
+    docker:
+      - image: cibuilds/github
+    steps:
+      - attach_workspace:
+          at: ~/pfs
+      - extract-changelog-version
+      - run:
+          name: publish github release
+          working_directory: ~/pfs
+          command: |
+            cp ./haensl-pfs.tgz ./haensl-pfs-${VERSION}.tgz
+            CHANGES=$(awk "/## ${VERSION}/,/^$/" CHANGELOG.md)
+            echo "Publishing release v${VERSION} to Github.\nChanges:"
+            echo $CHANGES
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete -n "v${VERSION}" -b "${CHANGES}" "v${VERSION}" ./haensl-pfs-${VERSION}.tgz
+  
