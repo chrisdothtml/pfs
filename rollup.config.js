@@ -1,5 +1,5 @@
-const nodeResolve = require('@rollup/plugin-node-resolve');
-const babel = require('rollup-plugin-babel');
+const nodeResolve = require('@rollup/plugin-node-resolve').default;
+const babel = require('@rollup/plugin-babel').default;
 const commonJS = require('@rollup/plugin-commonjs');
 const external = require('rollup-plugin-peer-deps-external');
 const minify = require('rollup-plugin-terser').terser;
@@ -13,6 +13,7 @@ const copyright = `// ${pkg.homepage} v${pkg.version} Copyright ${(new Date()).g
 
 module.exports = [
   {
+    external: [/@babel\/runtime/],
     input: './src/index.js',
     output: {
       esModule: false,
@@ -29,12 +30,12 @@ module.exports = [
         includeDependencies: true
       }),
       babel({
+        babelHelpers: 'runtime',
         babelrc: false,
         exclude: [
           'node_modules/**',
           '**/*.test.js'
         ],
-        runtimeHelpers: true,
         presets: [
           [
             '@babel/preset-env',
@@ -42,6 +43,9 @@ module.exports = [
               modules: false
             }
           ]
+        ],
+        plugins: [
+          '@babel/plugin-transform-runtime'
         ]
       }),
       commonJS({
@@ -53,6 +57,7 @@ module.exports = [
   },
   {
     input: './src/index.js',
+    external: [/@babel\/runtime/],
     output: [
       {
         file: pkg.main,
@@ -69,12 +74,12 @@ module.exports = [
         includeDependencies: true
       }),
       babel({
+        babelHelpers: 'runtime',
         babelrc: false,
         exclude: [
           'node_modules/**',
           '**/*.test.js'
         ],
-        runtimeHelpers: true,
         presets: [
           [
             '@babel/preset-env',
@@ -85,6 +90,9 @@ module.exports = [
               }
             }
           ]
+        ],
+        plugins: [
+          '@babel/plugin-transform-runtime'
         ]
       }),
       commonJS({
