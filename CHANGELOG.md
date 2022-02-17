@@ -1,3 +1,7 @@
+## 2.4.1
+* [#11: Add funding information.](https://github.com/haensl/pfs/issues/11)
+* Update dependencies.
+
 ## 2.4.0
 * [#9: Automate Github release.](https://github.com/haensl/pfs/issues/9)
 * Update dependencies.
